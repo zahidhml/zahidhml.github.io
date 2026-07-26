@@ -1,0 +1,17 @@
+[
+  {
+    "id": "bs-computer-science",
+    "degree": "Bachelor of Science in Computer Science",
+    "institution": "University of Chitral",
+    "location": "Chitral, KPK, Pakistan",
+    "period": "2020 - 2024",
+    "status": "Completed",
+    "description": "Comprehensive education in computer science fundamentals, web development, and software engineering principles.",
+    "highlights": [
+      "Core subjects: Data Structures, Algorithms, Web Development, Database Management",
+      "Capstone project: Full-stack web application development",
+      "Focus on practical web technologies and industry-relevant skills",
+      "Coursework includes HTML/CSS, JavaScript, PHP, and modern frameworks"
+    ]
+  }
+]

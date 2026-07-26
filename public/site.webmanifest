@@ -1,0 +1,17 @@
+{
+  "name": "Zahid Iqbal Portfolio",
+  "short_name": "ZI Portfolio",
+  "description": "Full-Stack Developer portfolio - Next.js, React, TypeScript",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0F6E56",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

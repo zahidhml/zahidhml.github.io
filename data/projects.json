@@ -1,0 +1,41 @@
+[
+  {
+    "id": "chitrali-saughat",
+    "title": "Chitrali Saughat",
+    "featured": true,
+    "category": "Ecommerce",
+    "tags": ["WordPress", "Ecommerce", "SEO"],
+    "shortDesc": "Ecommerce website showcasing authentic Chitrali products including woolen shawls, pakols, dry fruits, shilajit, and traditional handicrafts. Built using WordPress and WooCommerce with a focus on user experience and online sales.",
+    "longDesc": "Designed and developed a complete e-commerce website for Chitrali Saughat, a brand selling handmade products from the Chitral region of Pakistan. Implemented WooCommerce with custom product pages, wishlist functionality, cart and checkout flows, SEO-optimised meta data, Open Graph images, and free-delivery logic. Integrated Apple Pay and Google Pay. Achieved a Lighthouse performance score above 90.",
+    "tech": ["WordPress", "WooCommerce", "Elementor", "PHP", "SEO", "WooCommerce Payments"],
+    "live": "https://chitralisaughat.com/",
+    "github": null,
+    "image": "/images/projects/chitrali-saughat.png"
+  },
+  {
+    "id": "upper-hand-foundation",
+    "title": "Upper Hand Organization",
+    "featured": true,
+    "category": "NGO",
+    "tags": ["WordPress", "NGO", "SEO"],
+    "shortDesc": "Designed and developed a nonprofit organization website focused on donations, community support, education initiatives, medical assistance, housing projects, and relief programs in northern Pakistan.",
+    "longDesc": "Built the full web presence for Upper Hand Organization, a Pakistan-based nonprofit providing housing, clean water, medical care, and disaster relief. Delivered animated impact stats (2.5K families helped, 50+ students supported, 43 water projects), a cause-listing system with individual donation pages, a member login/register flow, WhatsApp contact integration, and SEO with structured data markup.",
+    "tech": ["WordPress", "Elementor", "Slider Revolution", "PHP", "WooCommerce Donations", "SEO"],
+    "live": "https://www.upperhandfdn.org/",
+    "github": null,
+    "image": "/images/projects/upper-hand.png"
+  },
+  {
+    "id": "aone-patti-chitral",
+    "title": "A One Patti House Chitral",
+    "featured": true,
+    "category": "Ecommerce",
+    "tags": ["WordPress", "Ecommerce", "SEO"],
+    "shortDesc": "Built a modern ecommerce platform for traditional Chitrali clothing and handmade wool products, including shawls, caps, coats, waistcoats, and accessories. Integrated WooCommerce and optimized user experience for online shopping.",
+    "longDesc": "Developed a product-focused WooCommerce store for A One Patti House Chitral. Configured custom product categories, regional delivery rules, an SVG favicon, Tailwind-inspired dark theme (#181818), and full on-page SEO including Twitter Card and Open Graph metadata. Ensured mobile-first responsive design across all breakpoints.",
+    "tech": ["WordPress", "WooCommerce", "SEO", "Performance Optimization"],
+    "live": "https://www.aonepattichitral.com/",
+    "github": null,
+    "image": "/images/projects/a-one-patti.png"
+  }
+]

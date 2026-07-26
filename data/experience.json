@@ -1,0 +1,35 @@
+[
+  {
+    "id": "wordpress-dev-seo-expert",
+    "role": "WordPress Developer & SEO Expert",
+    "company": "HindukushSoft Technologies",
+    "location": "Drosh, Lower Chitral, KPK, Pakistan",
+    "period": "2024 - Present",
+    "type": "Full-Time",
+    "description": "Developing and optimizing WordPress websites with a focus on SEO, performance, and user experience.",
+    "highlights": [
+      "Built and optimized multiple WordPress e-commerce websites with WooCommerce",
+      "Implemented technical SEO strategies achieving 90+ Lighthouse scores",
+      "Managed website maintenance and performance optimization for client projects",
+      "Integrated payment gateways and donation systems for e-commerce platforms",
+      "Created responsive designs using Elementor and custom CSS",
+      "Optimized Google Analytics and Google Search Console configurations"
+    ]
+  },
+  {
+    "id": "wordpress-intern",
+    "role": "WordPress Developer Intern",
+    "company": "HindukushSoft Technologies",
+    "location": "Drosh, Lower Chitral, KPK, Pakistan",
+    "period": "2023 - 2024",
+    "type": "Internship",
+    "description": "Learned WordPress development, WooCommerce, and basic SEO principles through hands-on project work.",
+    "highlights": [
+      "Assisted in development of WordPress websites",
+      "Learned WooCommerce configuration and customization",
+      "Participated in SEO implementation and optimization",
+      "Gained experience with Elementor page builder",
+      "Collaborated with senior developers on client projects"
+    ]
+  }
+]

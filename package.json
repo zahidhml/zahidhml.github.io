@@ -1,0 +1,42 @@
+{
+  "name": "zahid-iqbal-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Zahid Iqbal, Full-Stack Developer at Hindukush Technologies",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .ts,.tsx",
+    "type-check": "tsc --noEmit",
+    "sitemap": "next-sitemap"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    
+    "clsx": "^2.0.0",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^0.402.0",
+    "next": "^15.0.0",
+    "next-sitemap": "^2.2.24",
+    "next-themes": "^0.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.48.0",
+    
+    "sonner": "^1.2.3",
+    "tailwind-merge": "^2.2.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^15.0.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3"
+  }
+}

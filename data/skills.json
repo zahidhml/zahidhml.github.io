@@ -1,0 +1,64 @@
+{
+  "wordpress": {
+    "title": "WordPress & Backend",
+    "skills": [
+      { "name": "WordPress Development", "level": "Expert" },
+      { "name": "WooCommerce", "level": "Expert" },
+      { "name": "PHP", "level": "Intermediate" },
+      { "name": "REST APIs", "level": "Advanced" }
+    ]
+  },
+  "frontend": {
+    "title": "Web Foundations",
+    "skills": [
+      { "name": "HTML5", "level": "Expert" },
+      { "name": "CSS3", "level": "Expert" },
+      { "name": "Responsive Design", "level": "Expert" }
+    ]
+  },
+  "seo": {
+    "title": "SEO & Performance",
+    "skills": [
+      { "name": "Technical SEO", "level": "Expert" },
+      { "name": "On-Page SEO", "level": "Expert" },
+      { "name": "Google Analytics", "level": "Advanced" },
+      { "name": "Google Search Console", "level": "Advanced" },
+      { "name": "Website Speed Optimization", "level": "Advanced" },
+      { "name": "Schema Markup (JSON-LD)", "level": "Advanced" },
+      { "name": "Page Speed Insights", "level": "Advanced" }
+    ]
+  },
+  "tools": {
+    "title": "Tools & Platforms",
+    "skills": [
+      { "name": "Elementor", "level": "Expert" },
+      { "name": "VS Code", "level": "Expert" },
+      { "name": "GitHub", "level": "Advanced" },
+      { "name": "cPanel", "level": "Intermediate" },
+      { "name": "Vercel", "level": "Intermediate" }
+    ]
+  },
+  "other": {
+    "title": "Specialized Skills",
+    "skills": [
+      { "name": "Website Maintenance", "level": "Advanced" },
+      { "name": "Slider Revolution", "level": "Intermediate" },
+      { "name": "WooCommerce Payments", "level": "Advanced" },
+      { "name": "Performance Optimization", "level": "Advanced" },
+      { "name": "SEO Auditing", "level": "Advanced" }
+    ]
+  },
+  "hosting": {
+    "title": "Hosting & Server Mgmt",
+    "skills": [
+      { "name": "Namecheap & Hostinger", "level": "Advanced" },
+      { "name": "Domain & DNS Setup", "level": "Expert" },
+      { "name": "Website Deployment", "level": "Expert" },
+      { "name": "SSL Installation", "level": "Expert" },
+      { "name": "Email Configuration", "level": "Advanced" },
+      { "name": "Backups & Restoration", "level": "Expert" },
+      { "name": "cPanel Management", "level": "Advanced" },
+      { "name": "Website Migration", "level": "Advanced" }
+    ]
+  }
+}
