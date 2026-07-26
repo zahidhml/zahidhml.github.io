@@ -160,9 +160,9 @@ vercel
 1. Push to GitHub
 2. Go to [vercel.com](https://vercel.com) → New Project → Import your repo
 3. Add environment variables in Vercel dashboard:
-   - `RESEND_API_KEY`
-   - `NEXT_PUBLIC_SITE_URL` (your Vercel URL or custom domain)
-   - `NEXT_PUBLIC_CONTACT_EMAIL`
+	 - `RESEND_API_KEY`
+	 - `NEXT_PUBLIC_SITE_URL` (your Vercel URL or custom domain)
+	 - `NEXT_PUBLIC_CONTACT_EMAIL`
 4. Deploy!
 
 Vercel automatically deploys every push to `main`.
@@ -199,11 +199,11 @@ Edit `tailwind.config.ts`:
 
 ```ts
 colors: {
-  primary: {
-    DEFAULT: '#0F6E56',   // deep teal
-    light: '#1D9E75',     // lighter teal
-  },
-  accent: '#BA7517',      // golden amber
+	primary: {
+		DEFAULT: '#0F6E56',   // deep teal
+		light: '#1D9E75',     // lighter teal
+	},
+	accent: '#BA7517',      // golden amber
 }
 ```
 
@@ -268,3 +268,4 @@ MIT © 2024 Muhammad Zahid Iqbal
 ---
 
 *Built with ❤️ from Chitral, Pakistan*
+
