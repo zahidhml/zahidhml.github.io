@@ -1,90 +1,81 @@
 'use client';
 
-import Link from 'next/link';
-import { Github, Linkedin, Mail, MessageCircle, MapPin, Heart, Facebook, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageCircle, MapPin, Heart, Facebook, Instagram, ArrowUp } from 'lucide-react';
+import { useSmoothScroll } from '@/components/providers/LenisProvider';
 
 const socialLinks = [
-  {
-    icon: Mail,
-    label: 'Email',
-    href: 'mailto:mzahidiqbal129@gmail.com',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/zahidhml',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/itszahidd7/',
-  },
-  {
-    icon: Facebook,
-    label: 'Facebook',
-    href: 'https://www.facebook.com/itszahidd7',
-  },
-  {
-    icon: Instagram,
-    label: 'Instagram',
-    href: 'https://www.instagram.com/itszahidd7',
-  },
-  {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    href: 'https://wa.me/923486377723',
-  },
+  { icon: Mail,          label: 'Email',     href: 'mailto:mzahidiqbal129@gmail.com' },
+  { icon: Github,        label: 'GitHub',    href: 'https://github.com/zahidhml' },
+  { icon: Linkedin,      label: 'LinkedIn',  href: 'https://www.linkedin.com/in/itszahidd7/' },
+  { icon: Facebook,      label: 'Facebook',  href: 'https://www.facebook.com/itszahidd7' },
+  { icon: Instagram,     label: 'Instagram', href: 'https://www.instagram.com/itszahidd7' },
+  { icon: MessageCircle, label: 'WhatsApp',  href: 'https://wa.me/923486377723' },
 ];
 
 const quickLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Resume', href: '/resume' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home',          section: 'home'     },
+  { label: 'About',         section: 'about'    },
+  { label: 'Skills',        section: 'skills'   },
+  { label: 'Selected Work', section: 'projects' },
+  { label: 'Experience',    section: 'resume'   },
+  { label: 'Contact',       section: 'contact'  },
 ];
 
-const skills = [
-  'WordPress',
-  'WooCommerce',
-  'Technical SEO',
-  'On-Page SEO',
-  'Google Analytics',
-  'Next.js 15',
+const topSkills = [
+  'WordPress', 'WooCommerce', 'Technical SEO',
+  'On-Page SEO', 'Google Analytics', 'Next.js 15',
 ];
 
 /**
- * Footer — rich footer with brand, skills cloud, quick nav, and social links.
+ * Footer — elegant minimal dark footer with subtle hover heart animation.
  */
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const { scrollTo } = useSmoothScroll();
 
   return (
-    <footer className="bg-gray-50 dark:bg-[#0d0e0c] border-t border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+    <footer
+      style={{
+        background: '#050816',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
 
-          {/* Brand column */}
+          {/* Brand & Socials */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-sm">
-                ZI
+            <button
+              onClick={() => scrollTo('#home', { offset: 0 })}
+              className="flex items-center gap-3 mb-4 cursor-pointer group text-left"
+              aria-label="Back to home"
+            >
+              <div
+                className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-[#7400B8] flex-shrink-0"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/profile-1.jpg"
+                  alt="Muhammad Zahid Iqbal"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <span className="text-xl font-display font-bold text-gray-900 dark:text-gray-100">
+              <span className="text-lg font-bold text-white tracking-tight group-hover:text-[#80FFDB] transition-colors duration-200">
                 Zahid Iqbal
               </span>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 max-w-xs">
+            </button>
+
+            <p className="text-xs sm:text-sm leading-relaxed mb-4 max-w-xs text-[#8A94A7]">
               WordPress Developer & SEO Expert at HindukushSoft Technologies.
-              Building fast, accessible websites with real-world impact.
+              Crafting fast, search-optimized web applications.
             </p>
-            <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-500 mb-6">
-              <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+
+            <div className="flex items-center gap-1.5 text-xs text-[#8A94A7] mb-6">
+              <MapPin className="w-3.5 h-3.5 text-[#7400B8] flex-shrink-0" />
               Drosh, Lower Chitral, KPK, Pakistan
             </div>
 
-            {/* Social icons */}
-            <div className="flex items-center gap-2">
+            {/* Social Links */}
+            <div className="flex items-center gap-2 flex-wrap">
               {socialLinks.map((link) => {
                 const Icon = link.icon;
                 return (
@@ -94,7 +85,7 @@ export default function Footer() {
                     target={link.href.startsWith('mailto') ? undefined : '_blank'}
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="p-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-primary-light dark:hover:text-gray-900 dark:hover:border-primary-light rounded-xl transition-all duration-200"
+                    className="p-2 rounded-xl text-[#8A94A7] hover:text-white transition-colors duration-150 border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.08]"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -103,36 +94,36 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="font-display font-bold text-gray-900 dark:text-gray-100 mb-4 text-sm uppercase tracking-wider">
-              Quick Links
+            <h3 className="font-bold text-xs uppercase tracking-widest mb-4 text-[#5E60CE]">
+              Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors flex items-center gap-1.5 group"
+                <li key={link.section}>
+                  <button
+                    onClick={() => scrollTo(`#${link.section}`, { offset: -76 })}
+                    className="text-xs sm:text-sm text-[#8A94A7] hover:text-white transition-colors duration-150 flex items-center gap-2 cursor-pointer"
                   >
-                    <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                    <span className="w-1 h-1 rounded-full bg-[#7400B8]/50" />
                     {link.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Skills cloud */}
+          {/* Top Skills */}
           <div>
-            <h3 className="font-display font-bold text-gray-900 dark:text-gray-100 mb-4 text-sm uppercase tracking-wider">
+            <h3 className="font-bold text-xs uppercase tracking-widest mb-4 text-[#5E60CE]">
               Top Skills
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
+            <div className="flex flex-wrap gap-1.5">
+              {topSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="text-xs px-2.5 py-1 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 rounded-lg font-medium"
+                  className="text-xs px-2.5 py-1 rounded-lg font-medium text-[#8A94A7] bg-white/[0.03] border border-white/[0.08]"
                 >
                   {skill}
                 </span>
@@ -141,20 +132,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
-            <p className="flex items-center gap-1">
-              © {currentYear} Muhammad Zahid Iqbal — Made with{' '}
-              <Heart className="w-3 h-3 text-red-500 fill-red-500 inline mx-0.5" />{' '}
-              by Zahid
-            </p>
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                Open to opportunities
-              </span>
-            </div>
+        {/* Minimal Centered Footer Text */}
+        <div
+          className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.06]"
+        >
+          <div className="flex items-center gap-1.5 text-xs text-[#8A94A7] group cursor-default">
+            <span>Built with</span>
+            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 transition-transform duration-200 group-hover:scale-125" />
+            <span>by <strong className="text-white font-semibold">Muhammad Zahid Iqbal</strong></span>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-2 text-xs text-[#8A94A7]">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              Open for opportunities
+            </span>
+
+            <button
+              onClick={() => scrollTo('#home', { offset: 0, duration: 1.2 })}
+              aria-label="Back to top"
+              className="p-2 rounded-xl text-[#B8C0D4] hover:text-white transition-colors duration-150 border border-white/[0.08] bg-white/[0.04] cursor-pointer"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>

@@ -1,35 +1,34 @@
 [
   {
     "id": "wordpress-dev-seo-expert",
-    "role": "WordPress Developer & SEO Expert",
+    "role": "WordPress Developer & Technical SEO Specialist",
     "company": "HindukushSoft Technologies",
+    "logo": "https://www.google.com/s2/favicons?domain=hindukushtech.com&sz=128",
     "location": "Drosh, Lower Chitral, KPK, Pakistan",
-    "period": "2024 - Present",
+    "period": "2025 - Present",
     "type": "Full-Time",
-    "description": "Developing and optimizing WordPress websites with a focus on SEO, performance, and user experience.",
+    "description": "Developing high-performance WordPress websites, WooCommerce stores, and implementing Technical SEO strategies.",
     "highlights": [
-      "Built and optimized multiple WordPress e-commerce websites with WooCommerce",
-      "Implemented technical SEO strategies achieving 90+ Lighthouse scores",
-      "Managed website maintenance and performance optimization for client projects",
-      "Integrated payment gateways and donation systems for e-commerce platforms",
-      "Created responsive designs using Elementor and custom CSS",
-      "Optimized Google Analytics and Google Search Console configurations"
+      "Started professionally in 2025 following a successful WordPress development internship",
+      "Engineers custom WordPress e-commerce websites and WooCommerce storefronts",
+      "Implements Technical SEO, Schema.org metadata, and 90+ Lighthouse Core Web Vitals optimizations",
+      "Configures hosting, DNS settings, and performs seamless website migrations",
+      "Manages WooCommerce payment gateway integrations and custom PHP hooks"
     ]
   },
   {
     "id": "wordpress-intern",
     "role": "WordPress Developer Intern",
     "company": "HindukushSoft Technologies",
+    "logo": "https://www.google.com/s2/favicons?domain=hindukushtech.com&sz=128",
     "location": "Drosh, Lower Chitral, KPK, Pakistan",
-    "period": "2023 - 2024",
+    "period": "2024 - 2025",
     "type": "Internship",
-    "description": "Learned WordPress development, WooCommerce, and basic SEO principles through hands-on project work.",
+    "description": "Completed an intensive internship focusing on WordPress theme development, WooCommerce configurations, and SEO fundamentals.",
     "highlights": [
-      "Assisted in development of WordPress websites",
-      "Learned WooCommerce configuration and customization",
-      "Participated in SEO implementation and optimization",
-      "Gained experience with Elementor page builder",
-      "Collaborated with senior developers on client projects"
+      "Assisted senior engineers in developing WordPress business websites",
+      "Learned custom WooCommerce setup, catalog architecture, and Elementor design",
+      "Implemented initial SEO auditing and page speed optimization tasks"
     ]
   }
 ]

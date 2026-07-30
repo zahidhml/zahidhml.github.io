@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ExternalLink, Lock, Star, ArrowRight } from 'lucide-react';
+import { ExternalLink, Lock, Star, ArrowRight, Github } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
-import Badge from '@/components/ui/Badge';
+import MagneticButton from '@/components/ui/MagneticButton';
+import { useSmoothScroll } from '@/components/providers/LenisProvider';
 import projectsData from '@/data/projects.json';
 import type { Project } from '@/types';
 
@@ -14,16 +14,12 @@ const projects = projectsData as Project[];
 
 const filters = ['All', 'WordPress', 'Ecommerce', 'SEO', 'NGO', 'Business Website'];
 
-const categoryColor: Record<string, string> = {
-  Ecommerce: 'bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200/60',
-  NGO: 'bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 border-teal-200/60',
-  'Fashion Ecommerce': 'bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 border-purple-200/60',
-};
-
 /**
- * Projects section — featured projects with category filter and animated cards.
+ * Projects — premium dark project cards with glass overlay, image zoom, and filter pills.
+ * Navigation uses Lenis scrollTo — no page routing.
  */
 export default function Projects() {
+  const { scrollTo } = useSmoothScroll();
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filtered =
@@ -34,14 +30,22 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-[#0a0a09]/80"
+      className="relative py-24 sm:py-32 lg:py-40 px-4 sm:px-6 lg:px-8"
       aria-label="Projects section"
+      style={{ background: '#0B1021' }}
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Background accent */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-10"
+        style={{ background: 'radial-gradient(circle, rgba(72,191,227,0.5) 0%, transparent 70%)' }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
           badge="My Work"
           title="Featured Projects"
-          subtitle="Ecommerce platforms, nonprofit solutions, and custom WordPress builds — all optimized for performance and SEO."
+          subtitle="Ecommerce platforms, nonprofit solutions, and custom WordPress builds — optimized for performance and SEO."
         />
 
         {/* Filter tabs */}
@@ -50,7 +54,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-2 mb-12"
+          className="flex flex-wrap justify-center gap-2 mb-12"
           role="group"
           aria-label="Project filters"
         >
@@ -59,11 +63,33 @@ export default function Projects() {
               key={f}
               onClick={() => setActiveFilter(f)}
               aria-pressed={activeFilter === f}
-              className={`px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 border ${
+              className="px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200"
+              style={
                 activeFilter === f
-                  ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
-                  : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:border-primary/50 hover:text-primary dark:hover:text-primary-light'
-              }`}
+                  ? {
+                      background: 'linear-gradient(135deg, #7400B8, #5E60CE)',
+                      color: '#FFFFFF',
+                      boxShadow: '0 4px 16px rgba(116,0,184,0.3)',
+                      border: '1px solid transparent',
+                    }
+                  : {
+                      background: 'rgba(255,255,255,0.04)',
+                      color: '#8A94A7',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                    }
+              }
+              onMouseEnter={(e) => {
+                if (activeFilter !== f) {
+                  (e.currentTarget as HTMLElement).style.color = '#FFFFFF';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(116,0,184,0.35)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeFilter !== f) {
+                  (e.currentTarget as HTMLElement).style.color = '#8A94A7';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                }
+              }}
             >
               {f}
             </button>
@@ -88,25 +114,31 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <p className="text-gray-500 dark:text-gray-400">No projects in this category yet.</p>
+            <p style={{ color: '#8A94A7' }}>No projects in this category yet.</p>
           </motion.div>
         )}
 
-        {/* View all link */}
+        {/* View all → scroll to contact */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-14"
         >
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-light transition-colors shadow-lg shadow-primary/20"
-          >
-            View All Projects
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <MagneticButton strength={0.22}>
+            <button
+              onClick={() => scrollTo('#contact', { offset: -76 })}
+              className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-xl text-sm text-white transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              style={{
+                background: 'linear-gradient(135deg, #7400B8, #5E60CE)',
+                boxShadow: '0 4px 24px rgba(116,0,184,0.35)',
+              }}
+            >
+              Start a Project
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </MagneticButton>
         </motion.div>
       </div>
     </section>
@@ -114,85 +146,139 @@ export default function Projects() {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const catColor =
-    categoryColor[project.category] ||
-    'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 border-gray-200/60';
-
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, delay: index * 0.07 }}
-      whileHover={{ y: -6 }}
-      className="group relative bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-300 flex flex-col"
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className="group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-400 hover:-translate-y-2"
+      style={{
+        background: 'rgba(255,255,255,0.04)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = 'rgba(116,0,184,0.4)';
+        el.style.boxShadow = '0 12px 48px rgba(116,0,184,0.2)';
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = 'rgba(255,255,255,0.08)';
+        el.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+      }}
     >
-      {/* Featured ribbon */}
+      {/* Featured badge */}
       {project.featured && (
-        <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 bg-accent text-white text-xs font-bold rounded-full shadow-md">
-          <Star className="w-3 h-3 fill-white" />
-          Featured
+        <div
+          className="absolute top-3 right-3 z-20 flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-full"
+          style={{
+            background: 'linear-gradient(135deg, #7400B8, #5E60CE)',
+            boxShadow: '0 4px 12px rgba(116,0,184,0.4)',
+          }}
+        >
+          <Star className="w-2.5 h-2.5 fill-white text-white" />
+          <span className="text-white">Featured</span>
         </div>
       )}
 
       {/* Image area */}
-      <div className="relative h-48 bg-gradient-to-br from-primary/15 via-primary/5 to-accent/15 flex items-center justify-center overflow-hidden">
+      <div className="relative h-56 overflow-hidden bg-[#0F1629]">
         {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
           <>
-            {/* Decorative pattern */}
-            <div className="absolute inset-0 opacity-30 dark:opacity-20">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(15,110,86,0.15),transparent_70%)]" />
-            </div>
-            <div className="relative text-center px-6">
-              <div className="text-5xl font-display font-bold text-primary/30 dark:text-primary/20 mb-2 select-none">
-                {project.title.charAt(0)}
-              </div>
-              <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full border ${catColor}`}>
-                {project.category}
-              </span>
-            </div>
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Hover glass overlay */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: 'linear-gradient(to top, rgba(116,0,184,0.3) 0%, transparent 60%)' }}
+            />
           </>
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div
+              className="text-6xl font-bold select-none mb-3"
+              style={{ color: 'rgba(116,0,184,0.3)' }}
+            >
+              {project.title.charAt(0)}
+            </div>
+            <span
+              className="text-xs font-semibold px-3 py-1 rounded-full"
+              style={{
+                background: 'rgba(116,0,184,0.15)',
+                border: '1px solid rgba(116,0,184,0.3)',
+                color: '#B8C0D4',
+              }}
+            >
+              {project.category}
+            </span>
+          </div>
         )}
       </div>
 
       {/* Content */}
       <div className="flex-1 flex flex-col p-6">
-        <h3 className="text-lg font-display font-bold text-gray-900 dark:text-gray-50 mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+        <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-[#80FFDB] transition-colors duration-200">
           {project.title}
         </h3>
 
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed flex-grow line-clamp-3">
+        <p
+          className="text-sm leading-relaxed flex-grow line-clamp-3 mb-5"
+          style={{ color: '#8A94A7' }}
+        >
           {project.shortDesc}
         </p>
 
         {/* Tech badges */}
         <div className="flex flex-wrap gap-1.5 mb-5">
           {project.tech.slice(0, 4).map((t) => (
-            <Badge key={t} label={t} variant="default" size="sm" />
+            <span
+              key={t}
+              className="text-xs px-2.5 py-1 rounded-lg font-medium"
+              style={{
+                background: 'rgba(94,96,206,0.12)',
+                border: '1px solid rgba(94,96,206,0.25)',
+                color: '#B8C0D4',
+              }}
+            >
+              {t}
+            </span>
           ))}
           {project.tech.length > 4 && (
-            <Badge label={`+${project.tech.length - 4}`} variant="ghost" size="sm" />
+            <span
+              className="text-xs px-2.5 py-1 rounded-lg font-medium"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                color: '#8A94A7',
+              }}
+            >
+              +{project.tech.length - 4}
+            </span>
           )}
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+        <div
+          className="flex gap-3 pt-4"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        >
           <a
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-primary text-white text-sm font-semibold rounded-xl hover:bg-primary-light transition-colors"
+            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-xl text-white transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              background: 'linear-gradient(135deg, #7400B8, #5E60CE)',
+              boxShadow: '0 4px 12px rgba(116,0,184,0.25)',
+            }}
           >
             Live Demo
             <ExternalLink className="w-3.5 h-3.5" />
@@ -203,15 +289,25 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                color: '#B8C0D4',
+                border: '1px solid rgba(255,255,255,0.1)',
+                background: 'rgba(255,255,255,0.04)',
+              }}
             >
+              <Github className="w-3.5 h-3.5" />
               GitHub
             </a>
           ) : (
             <button
               disabled
               title="Private / client project"
-              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 border border-gray-200/60 dark:border-gray-800/60 text-gray-400 dark:text-gray-600 text-sm font-semibold rounded-xl opacity-50 cursor-not-allowed"
+              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-xl opacity-40 cursor-not-allowed"
+              style={{
+                color: '#8A94A7',
+                border: '1px solid rgba(255,255,255,0.06)',
+              }}
             >
               <Lock className="w-3.5 h-3.5" />
               Private

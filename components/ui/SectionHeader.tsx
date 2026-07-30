@@ -5,48 +5,58 @@ import { motion } from 'framer-motion';
 interface SectionHeaderProps {
   badge?: string;
   title: string;
+  titleGradient?: boolean;
   subtitle?: string;
   align?: 'left' | 'center';
   className?: string;
 }
 
 /**
- * Reusable section header with badge, title, accent line, and optional subtitle.
+ * Reusable premium section header with badge, title, accent rule, and subtitle.
  */
 export default function SectionHeader({
   badge,
   title,
+  titleGradient = false,
   subtitle,
-  align = 'left',
+  align = 'center',
   className = '',
 }: SectionHeaderProps) {
-  const alignClass = align === 'center' ? 'text-center items-center' : '';
+  const isCenter = align === 'center';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
       viewport={{ once: true }}
-      className={`flex flex-col gap-3 mb-16 ${alignClass} ${className}`}
+      className={`flex flex-col gap-4 mb-16 ${isCenter ? 'items-center text-center' : 'items-start text-left'} ${className}`}
     >
       {badge && (
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary dark:text-primary-light px-3 py-1 bg-primary/10 dark:bg-primary/20 rounded-full self-start">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-primary-light inline-block" />
+        <span className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#80FFDB] px-4 py-1.5 bg-[#80FFDB]/10 border border-[#80FFDB]/20 rounded-full ${isCenter ? 'self-center' : 'self-start'}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#80FFDB] inline-block" />
           {badge}
         </span>
       )}
-      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-gray-900 dark:text-gray-50">
+
+      <h2
+        className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${
+          titleGradient
+            ? 'text-gradient'
+            : 'text-white'
+        }`}
+      >
         {title}
       </h2>
-      <div
-        className={`flex items-center gap-3 ${align === 'center' ? 'justify-center' : ''}`}
-      >
-        <div className="w-12 h-1 bg-primary rounded-full" />
-        <div className="w-4 h-1 bg-accent rounded-full opacity-60" />
+
+      {/* Accent rule */}
+      <div className={`flex items-center gap-2 ${isCenter ? 'justify-center' : ''}`}>
+        <div className="h-px w-12 bg-gradient-to-r from-[#7400B8] to-[#48BFE3]" />
+        <div className="h-px w-4 bg-[#80FFDB]/40" />
       </div>
+
       {subtitle && (
-        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+        <p className="text-base sm:text-lg text-[#B8C0D4] max-w-2xl leading-relaxed">
           {subtitle}
         </p>
       )}
