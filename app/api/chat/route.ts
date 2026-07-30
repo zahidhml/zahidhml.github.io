@@ -62,6 +62,7 @@ export async function POST(req: Request) {
 
     return result.toTextStreamResponse();
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('AI Chat Error (falling back to mock stream):', error);
     return createMockStreamResponse(userLastMessage);
   }

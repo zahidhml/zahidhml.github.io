@@ -115,6 +115,7 @@ export function FloatingChatWidget() {
         });
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('AI Chat Error:', err);
       setMessages((prev) => [
         ...prev,

@@ -28,7 +28,8 @@ export function useSmoothScroll() {
  * Pauses the RAF loop when the browser tab is hidden for performance.
  */
 export default function LenisProvider({ children }: { children: ReactNode }) {
-  const lenisRef = useRef<unknown>(null);
+  // eslint-disable-next-line
+  const lenisRef = useRef<any>(null);
 
   useEffect(() => {
     let rafId: number;
@@ -42,7 +43,6 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
       try {
         const { default: Lenis } = await import('lenis');
 
-        // @ts-expect-error lenis types vary by version
         lenis = new Lenis({
           duration: 1.3,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -77,14 +77,12 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
 
     return () => {
       cancelAnimationFrame(rafId);
-      // @ts-expect-error dynamic ref
       lenisRef.current?.destroy?.();
     };
   }, []);
 
   const scrollTo = (target: ScrollToTarget, options?: Record<string, unknown>) => {
     if (lenisRef.current) {
-      // @ts-expect-error dynamic ref
       lenisRef.current.scrollTo(target, { offset: -80, duration: 1.3, ...options });
     } else {
       // Native fallback
