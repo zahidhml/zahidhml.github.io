@@ -8,7 +8,6 @@ import CursorSpotlight from '@/components/ui/CursorSpotlight';
 import MouseTrail from '@/components/ui/MouseTrail';
 import ParticlesCanvas from '@/components/ui/ParticlesCanvas';
 import GradientOrbs from '@/components/ui/GradientOrbs';
-import { LazyChatWidget } from '@/components/ui/LazyChatWidget';
 import { Toaster } from 'sonner';
 import './globals.css';
 
@@ -162,8 +161,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* z-30: cursor spotlight & mouse trail */}
           <CursorSpotlight />
           <MouseTrail />
-          {/* z-50: Floating Chat Widget (shadcn UI) */}
-          <LazyChatWidget />
           {/* z-9999: scroll progress bar */}
           <ScrollProgress />
 
